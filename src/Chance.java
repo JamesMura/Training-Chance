@@ -2,6 +2,7 @@
 
 public class Chance {
 
+    public static final int SURECHANCE = 1;
     private final double outcome;
 
     public Chance(double outcome) {
@@ -10,7 +11,7 @@ public class Chance {
 
 
     public Chance not() {
-        return new Chance(1 - outcome);
+        return new Chance(SURECHANCE - outcome);
     }
 
     public Chance and(Chance otherChance) {
@@ -28,5 +29,7 @@ public class Chance {
 
     }
 
-
+    public Chance or(Chance otherChance) {
+        return not().and(otherChance.not()).not();
+    }
 }

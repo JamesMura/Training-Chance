@@ -11,7 +11,7 @@ public class ChanceTest {
 
     @Test
     public void shouldCalculateTheChanceOfNotGettingATail() {
-        Chance negativeOutcome = new Chance(1.0 / 6.0).not();
+        Chance negativeOutcome = new Chance(1.0 / 2.0).not();
         assertEquals(negativeOutcome, new Chance(0.5));
     }
 
@@ -22,5 +22,15 @@ public class ChanceTest {
         Chance secondFlip = new Chance(1.0 / 2);
         assertEquals(firstFlip.and(secondFlip), new Chance(1.0 / 4));
     }
+
+
+    @Test
+    public void shouldCalculateTheChanceOfGettingAtleastOneTail() {
+        Chance firstFlip = new Chance(1.0 / 2);
+        Chance secondFlip = new Chance(1.0 / 2);
+        assertEquals(firstFlip.or(secondFlip), new Chance(3.0 / 4));
+    }
 }
+
+
 
